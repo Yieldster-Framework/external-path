@@ -23,6 +23,8 @@ public class ExEdge extends YieldsterEdge {
     private YieldsterVertex startVertex;
     private YieldsterVertex endVertex;
 
+    private Credentials credentials;
+
     public ExEdge(String name, Map<EdgeProperties, Object> properties, String startVertexName, String endVertexName) {
         ObjectId objectId = new ObjectId();
         this.id = objectId.toHexString();
@@ -69,7 +71,7 @@ public class ExEdge extends YieldsterEdge {
 
     @Override
     public void getCredentials(Credentials credentials) {
-
+        this.credentials = credentials;
     }
 
     public void setId(String id) {
@@ -110,5 +112,15 @@ public class ExEdge extends YieldsterEdge {
     public YieldsterExecutionResponse execute(BigInteger inputAssetAmount, BigInteger outputAssetAmount, String vaultAddress) {
         //logic to execute the swap/transformation operation from coin A to coin B
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return "ExEdge{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", startVertexName='" + startVertexName + '\'' +
+                ", endVertexName='" + endVertexName + '\'' +
+                '}';
     }
 }

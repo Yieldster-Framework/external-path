@@ -77,4 +77,12 @@ public class EXVertex extends YieldsterVertex {
     public void setToEdges(List<YieldsterEdge> toEdges) {
         this.toEdges = toEdges;
     }
+
+    @Override
+    public String toString() {
+        return "EXVertex{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

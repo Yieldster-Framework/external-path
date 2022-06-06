@@ -13,7 +13,7 @@ public class SampleExternalPathApplication {
 	private static final Logger logger = LoggerFactory.getLogger(SampleExternalPathApplication.class);
 
 	public static void main(String[] args) {SpringApplication.run(SampleExternalPathApplication.class, args);
-		ExGraph graph = new ExGraph("123","blah");
+		ExGraph graph = new ExGraph("123","sample-graph");
 		YieldsterGraph graphInstance = graph.getGraphInstance();
 		logger.info(graphInstance.toString());
 		logger.info("Successfully generated graph");

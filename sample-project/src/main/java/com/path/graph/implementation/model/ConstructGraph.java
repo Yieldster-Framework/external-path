@@ -1,8 +1,11 @@
 package com.path.graph.implementation.model;
 
 
+import com.path.SampleExternalPathApplication;
 import com.yieldster.yieldstergraph.enums.EdgeProperties;
 import com.yieldster.yieldstergraph.enums.TokenProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.HashMap;
@@ -11,6 +14,7 @@ import java.util.Scanner;
 public class ConstructGraph {
 
     ExGraph exGraph = new ExGraph("11231212","NewProtocolGraph");
+    private static final Logger logger = LoggerFactory.getLogger(ConstructGraph.class);
 
     public ExGraph constructGraph(){
         try{
@@ -38,16 +42,19 @@ public class ConstructGraph {
         File file = new File(fileName);
         Scanner sc = new Scanner(file);
         int i = 0;
+        logger.info("Adding vertices");
         while (sc.hasNextLine()) {
             String vertexData = sc.nextLine();
             String[] vertexDetails = vertexData.split(",", -2);
             try{
-                exGraph.addVertex(new EXVertex(vertexDetails[0], new HashMap() {
+                EXVertex obj = new EXVertex(vertexDetails[0], new HashMap() {
                     {
                         put(TokenProperties.tokenAddress, vertexDetails[1]);
                         put(TokenProperties.decimal, vertexDetails[2]);
                     }
-                }));
+                });
+                exGraph.addVertex(obj);
+                logger.info(obj.toString());
             }
             catch(Exception e){
                 System.out.println("exception: "+e);
@@ -67,17 +74,20 @@ public class ConstructGraph {
 //        File file = new File(fileName);
         Scanner sc = new Scanner(file);
         int j = 0;
+        logger.info("Adding Edges");
         while (sc.hasNextLine()) {
             String EdgeData = sc.nextLine();
             String[] vertexDetails = EdgeData.split(",", -2);
             String edgeName = vertexDetails[0]+"/"+vertexDetails[1];
 
-            exGraph.addEdge(new ExEdge(edgeName, new HashMap() {
+            ExEdge obj = new ExEdge(edgeName, new HashMap() {
                 {
                     put(EdgeProperties.initialToken, vertexDetails[0]);
                     put(EdgeProperties.finalToken, vertexDetails[1]);
                 }
-            }, vertexDetails[0], vertexDetails[1]));
+            }, vertexDetails[0], vertexDetails[1]);
+            exGraph.addEdge(obj);
+            logger.info(obj.toString());
         }
     }
 

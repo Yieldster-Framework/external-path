@@ -90,16 +90,14 @@ This class contains the following functions:
 - *`finalToken` : name of the token that we will get back once this edge is executed*
 - *`protocolName` : name of the protocol whose pool we are using in the current edge*
 - *`poolAddress` : address of the pool  being used*
-- *`poolType` :*
-- *`operationType` :*
+- *`poolType` : describes what type of pool we are using for the operation. Eg:Curve,Uniswap etc..*
+- *`operationType` : specifies wheather the operation is deposit/withdraw*
 - *`poolList` : List of protocols we are using in this edge operation*
 - *`poolId` : id of the pool into which we are initiating the swap/changing liquidity operations*
-- *`isStake` : boolean that depicts wheather the execution of the current edge results in a staking operation or not. True if we are staking, false if not*
-- *`stakingContract` : address of the contract to be staked*
+- *`isStake` : boolean that depicts wheather the execution of the current edge results in a staking operation or not. True if we are staking, false if not. This is required*
+- *`stakingContract` : address of the contract to be staked. Should be provided if isStake is true*
 
 ### TokenProperties
 
 - *`tokenAddress` : address of the crypto token*
 - *`decimal` : decimal of the crypto token*
-
-### PoolList
